@@ -10,8 +10,11 @@ dotenv.config();
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 const app = Express();
 
-app.use(cors());
-
+app.use(cors({
+    origin: 'https://ai-mailing-system.onrender.com/', // Replace with your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+}));
 app.use(Express.json());
 
 // Function to create a Nodemailer transporter
