@@ -10,11 +10,8 @@ dotenv.config();
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 const app = Express();
 
-app.use(cors({
-    origin: 'https://ai-mailing-system.onrender.com/', // Replace with your frontend URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
-}));
+app.use(cors());
+
 app.use(Express.json());
 
 // Function to create a Nodemailer transporter
@@ -75,6 +72,6 @@ app.post('/send/email', async (req, res) => {
     });
 });
 
-app.listen(5000, () => {
+app.listen(3000, () => {
     console.log("Express server is running on port 5000!")
 })
